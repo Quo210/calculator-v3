@@ -9,7 +9,7 @@ html {
 
 main {
     height: 750px;
-    width: 500px;
+    width: 900px;
     min-height: 75vh;
     min-width: 50vw;
 
@@ -32,11 +32,26 @@ main {
     font-size: 32px;
     padding: 0.5rem;
 
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    align-items: flex-end;
+    display: grid;
+    grid-template-rows: 90% auto;
+    row-gap: 1rem;
 
+
+}
+
+.row {
+    width: 100%;
+    background-color: rgb(117, 115, 115);
+    text-align: right;
+    border: 1px white solid;
+    padding: 0.25rem;
+
+}
+
+.log{
+    display: flex;
+    align-items: flex-end;
+    justify-content: end;
 }
 
 .panel > button {

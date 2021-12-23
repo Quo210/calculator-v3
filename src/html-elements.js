@@ -47,9 +47,16 @@ export const htmlElements = (()=>{
         return Array.from(buttons);
     }
 
+    function makeLogBox(){
+        const newBox = document.createElement('div');
+        newBox.classList.toggle('logbox');
+        return newBox;
+    }
+
     return {
         mkNums: numbButtons,
         mkOper: operatorButtons,
+        mkLBox: makeLogBox,
     }
 
 })()

@@ -11,7 +11,7 @@ const numbers = htmlElements.mkNums();
 const operators = htmlElements.mkOper();
 
 myTools.appendFromArr(panel,numbers)
-myTools.appendFromArr(screen,operators)
+myTools.appendFromArr(panel,operators)
 
 
 })()

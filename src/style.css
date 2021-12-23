@@ -36,11 +36,12 @@ main {
     grid-template-rows: 90% auto;
     row-gap: 1rem;
 
+    overflow-y: hidden;
+
 
 }
 
 .row {
-    width: 100%;
     background-color: rgb(117, 115, 115);
     text-align: right;
     border: 1px white solid;
@@ -50,8 +51,18 @@ main {
 
 .log{
     display: flex;
-    align-items: flex-end;
-    justify-content: end;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-end;
+    overflow-y: hidden;
+    
+}
+
+.logbox{
+    width: 20px;
+    min-width: 100%;
+    background-color: aliceblue;
+    color: black;
 }
 
 .panel > button {

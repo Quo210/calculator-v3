@@ -26,15 +26,19 @@ export const htmlElements = (()=>{
     }
 
     function operatorButtons(){
-        const buttons = makeButtons(7,'operator');
-        const arr = ['+','-','*','/','DEL','C','='];
-        const dataKeys = ['add','subs','mult','div','del','clear','equals']
-        for (let i = 0; i < buttons.length; i++){
-            buttons[i].textContent = arr[i];
-            buttons[i].setAttribute('data-key',`${dataKeys[i]}`)
-        }
+        const opbuttons = makeButtons(4,'opbtn');
+        const fnButtons = makeButtons(3,'fnbtn')
+        const opTxt = ['+','-','*','/'];
+        const fnTxt = ['DEL','C','=']
+        const opKeys = ['add','subs','mult','div']
+        const fnKeys = ['del','clear','equals'];
+
+        identifyButtons(opbuttons,opTxt,opKeys);
+        identifyButtons(fnButtons,fnTxt,fnKeys);
+
+        const finalArr = opbuttons.concat(fnButtons);
         
-        return buttons
+        return finalArr
     }
 
     function makeButtons(quant,clazz){
@@ -52,6 +56,13 @@ export const htmlElements = (()=>{
         const newBox = document.createElement('div');
         newBox.classList.toggle('logbox');
         return newBox;
+    }
+
+    function identifyButtons(targetArr,txtArr,keyArr){
+        for (let i = 0; i < targetArr.length; i++){
+            targetArr[i].textContent = txtArr[i];
+            targetArr[i].setAttribute('data-key',`${keyArr[i]}`)
+        }
     }
 
     return {

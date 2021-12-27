@@ -31,7 +31,7 @@ function listenNumbers(){
 }
 
 function listenOperators(){
-    const operators = Array.from( document.querySelectorAll('.operator') );
+    const operators = Array.from( document.querySelectorAll('.opbtn') );
     operators.forEach(element => {
         element.addEventListener('click',function(e){
             const data = e.target.textContent; // Get Operator string

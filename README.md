@@ -6,3 +6,7 @@ Last action: Fix CSS for the Screen and log box, numbers appear on the logbox
 Next fix: create reset functions for intro, log, values, etc.
 Notes:
 
+27/12/21 3am
+Last action: New branch added, clear all function added and bound to the button.
+Next: add functionality for DEL button
+Notes: Re-touch and publish blogpost about 'how to remove all children from a node'

@@ -54,6 +54,8 @@ function listenOperators(){
             //Post them
             postOnLog(numBox)
             postOnLog(opBox)
+            //Reset Intro for new number
+            resetIntro();
         })
     })
 }
@@ -75,8 +77,22 @@ function setAorBTo(bool,value){
     }
 }
 
+// Enable Listeners for Buttons
+
 listenNumbers();
 listenOperators();
+
+// Reset Area
+
+function resetIntro(){
+    const intro = getIntro();
+    intro.textContent = '0';
+}
+
+
+return {
+
+}
 
 
 })()

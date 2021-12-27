@@ -6,8 +6,6 @@ import { math } from './math';
 const myModule = (()=>{//Mostly DOM and joining other modules
 
 const panel = document.querySelector('section.panel');
-const screen = document.querySelector('section.screen');
-const logbox = document.querySelector('div.log');
 
 const numbers = htmlElements.mkNums();
 const operators = htmlElements.mkOper();
@@ -60,6 +58,21 @@ function listenOperators(){
     })
 }
 
+function listenClearAllBtn(){
+    const tar = getFnBtns()[1];
+    tar.addEventListener('click',function(e){
+        resetIntro();
+        resetLog();
+        resetMemory();
+    })
+}
+
+// Tools
+
+function getFnBtns(){
+    return Array.from( document.querySelectorAll('.fnbtn') )  
+}
+
 function getIntro(){
     return document.querySelector('.intro');
 }
@@ -77,16 +90,37 @@ function setAorBTo(bool,value){
     }
 }
 
+function getLog(){
+    return document.querySelector('.log');
+}
+
 // Enable Listeners for Buttons
 
 listenNumbers();
 listenOperators();
+listenClearAllBtn();
 
 // Reset Area
 
 function resetIntro(){
     const intro = getIntro();
     intro.textContent = '0';
+}
+
+function resetLog(){
+    const log = getLog();
+    log.innerHTML = '';
+}
+
+function resetMemory(){
+    math.setA(undefined);
+    math.setB(undefined);
+    math.setOp(undefined);
+    console.log(math.getA(),math.getB(),math.getOp())
+}
+
+function clearAll(){
+
 }
 
 

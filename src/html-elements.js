@@ -1,7 +1,7 @@
 export const htmlElements = (()=>{
 
     function numbButtons(){
-        const buttons = [];
+        const buttons = [];//Create Buttons from 1 to 9
         for (let i = 1;i < 10; i++){
             const newButton = document.createElement('button');
             newButton.classList.add('number');
@@ -9,7 +9,8 @@ export const htmlElements = (()=>{
             newButton.textContent = i;
             buttons.push(newButton);
         }
-
+        
+        //add 0 and dot to the button array
         const zero = document.createElement('button');
         zero.classList.add('number');
         zero.setAttribute('data-key','0');

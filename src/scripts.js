@@ -71,9 +71,17 @@ function listenDelBtn(){
         const newNumb = deleteLastNumber();
         const intro = getIntro();
         intro.textContent = newNumb;
-    })
-    
+    })   
 }
+
+function listenEqualBtn(){
+    const tar = getFnBtns()[2];
+    tar.addEventListener('click',function(e){
+        const v = checkNGetConditionsForMath(); // Values
+        const result = math.operate(v[0],v[1],v[2]);
+        console.log(result);
+    })
+};
 
 // Tools
 
@@ -102,12 +110,30 @@ function getLog(){
     return document.querySelector('.log');
 }
 
+function checkNGetConditionsForMath(){
+    const a = math.getA();
+    const b = math.getB();
+    const o = math.getOp();
+    const myArr = [];
+    myArr.push(a,b,o);
+    const check = (value) => value != undefined;
+    const answer = myArr.every(check);
+    console.log(answer, myArr)
+    if (answer === true){
+        console.log('SCS')
+        return myArr
+    } else {
+        alert('CONDITIONS NOT MET.')
+    }
+ }
+
 // Enable Listeners for Buttons
 
 listenNumbers();
 listenOperators();
 listenClearAllBtn();
 listenDelBtn();
+listenEqualBtn();
 
 // Reset Area
 
@@ -129,7 +155,7 @@ function resetMemory(){
 
 function clearAll(){
     resetIntro();
-    resetMemory;
+    resetMemory();
     resetLog();
 }
 

@@ -65,16 +65,20 @@ export const math = (()=>{
         }
     }
 
-    function operate(operator,a,b){
+    function operate(a,b,operator){
+
+        const verfa = verifyInteger(a);
+        const verfb = verifyInteger(b);
+
         switch(operator){
             case '+':
-                return add(a,b)
+                return add(verfa,verfb)
             case '-':
-                return subs(a,b)
+                return subs(verfa,verfb)
             case '*':
-                return mult(a,b);
+                return mult(verfa,verfb);
             case '/':
-                return divs(a,b);
+                return divs(verfa,verfb);
         }
     }
   

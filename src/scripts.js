@@ -77,9 +77,42 @@ function listenDelBtn(){
 function listenEqualBtn(){
     const tar = getFnBtns()[2];
     tar.addEventListener('click',function(e){
-        const v = checkNGetConditionsForMath(); // Values
+        //Declare varables to be used
+        const intro = getIntro();
+        const log = getLog();
+
+        //Determine and capture last number introduced by the user
+        const lastVal = intro.textContent;
+        const boolCheck = math.choose();
+        setAorBTo(boolCheck,lastVal);
+
+        //Report the operator and the number in the logbox, reset the intro slot
+        const lastValBox = htmlElements.mkLBox();
+        lastValBox.textContent = lastVal;
+        log.appendChild(lastValBox);
+        resetIntro();
+
+        //Check if the conditions are given to call the math function
+        const v = checkNGetConditionsForMath();
         const result = math.operate(v[0],v[1],v[2]);
-        console.log(result);
+
+        //Make a box that posts an equal sign on the log
+        const eqBox = htmlElements.mkLBox();
+        eqBox.textContent = '=';
+        log.appendChild(eqBox);
+
+        //Post the result on the log
+        // const rBox = htmlElements.mkLBox();
+        // rBox.textContent = result;
+        // log.appendChild(rBox);
+
+        //Display result on the intro box
+        intro.textContent = result;
+
+        //Reset memory in preparation for new inputs
+        resetMemory();
+
+
     })
 };
 

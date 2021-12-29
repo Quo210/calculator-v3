@@ -61,10 +61,18 @@ function listenOperators(){
 function listenClearAllBtn(){
     const tar = getFnBtns()[1];
     tar.addEventListener('click',function(e){
-        resetIntro();
-        resetLog();
-        resetMemory();
+        clearAll()
     })
+}
+
+function listenDelBtn(){
+    const tar = getFnBtns()[0];
+    tar.addEventListener('click',function(e){
+        const newNumb = deleteLastNumber();
+        const intro = getIntro();
+        intro.textContent = newNumb;
+    })
+    
 }
 
 // Tools
@@ -99,6 +107,7 @@ function getLog(){
 listenNumbers();
 listenOperators();
 listenClearAllBtn();
+listenDelBtn();
 
 // Reset Area
 
@@ -116,11 +125,26 @@ function resetMemory(){
     math.setA(undefined);
     math.setB(undefined);
     math.setOp(undefined);
-    console.log(math.getA(),math.getB(),math.getOp())
 }
 
 function clearAll(){
+    resetIntro();
+    resetMemory;
+    resetLog();
+}
 
+function deleteLastNumber(){
+    const intro = getIntro().textContent;
+    let newStr = undefined;
+
+    if (intro.length > 1){
+        const foo = intro.length-1;
+        newStr = intro.slice(0,foo);
+    } else {
+        newStr = '0';
+    }
+
+    return newStr;
 }
 
 

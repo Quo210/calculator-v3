@@ -119,6 +119,8 @@ function listenEqualBtn(){
         eqBox.textContent = '=';
         log.appendChild(eqBox);
 
+        console.log(result);
+
         //Post the result on the log
         // const rBox = htmlElements.mkLBox();
         // rBox.textContent = result;
@@ -129,6 +131,7 @@ function listenEqualBtn(){
 
         //Reset memory in preparation for new inputs
         resetMemory();
+        math.setOp(undefined);
 
 
     })
@@ -227,7 +230,7 @@ function deleteLastNumber(){
         const foo = intro.length-1;
         newStr = intro.slice(0,foo);
     } else {
-        newStr = '0';
+        newStr = '';
     }
 
     return newStr;

@@ -61,25 +61,47 @@ export const math = (()=>{
         if ( (typeof a) === 'number' ){
             return a
         } else {
-            return parseInt(a)
+            return parseFloat(a)
         }
+    }
+
+    function roundDecimals(val){
+        return Math.round( val * 100 ) / 100
+    }
+
+    function enableMath(val){
+        const myVal = verifyInteger(val);
+        const myRoundedVal = roundDecimals(myVal);
+        return myRoundedVal
     }
 
     function operate(a,b,operator){
 
         const verfa = verifyInteger(a);
         const verfb = verifyInteger(b);
+        let myResult = undefined;
+
+        console.log(verfa)
+        console.log(verfb)
 
         switch(operator){
             case '+':
-                return add(verfa,verfb)
+                myResult = add(verfa,verfb);
+                break;
             case '-':
-                return subs(verfa,verfb)
+                myResult = subs(verfa,verfb);
+                break;
             case '*':
-                return mult(verfa,verfb);
+                myResult = mult(verfa,verfb);
+                break;
             case '/':
-                return divs(verfa,verfb);
+                myResult = divs(verfa,verfb);
+                break;
+            default:
+                console.log('lol js so hard brain hurt :(')
         }
+
+        return roundDecimals(myResult);
     }
   
     function storeOnA(){

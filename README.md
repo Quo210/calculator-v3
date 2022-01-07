@@ -23,3 +23,5 @@ Next fix: solve problem when clicking an operator after having already clicked o
 Notes: progressed today despite IBS crisis. Good job to myself.
 
 07/01/22 2am 
+Note to self: delete console log on sucess from equals btn
+fix equals button used with no value inside introbox

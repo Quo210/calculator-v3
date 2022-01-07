@@ -37,23 +37,41 @@ function listenOperators(){
 
             // after it passes the check, get the number
             const value = getIntro().textContent;
-            //store the value and the operator
-            //for the operator simply save it
-            math.setOp(operator);
-            //for the value, a function decides where to store it: A or B value of the wVals object
-            let boolCheck = math.choose();
-            setAorBTo(boolCheck,value);
-            //finally, post on the logbox. First Create two boxes:
-            const numBox = htmlElements.mkLBox();
-            const opBox = htmlElements.mkLBox();
-            // Fill them with info
-            numBox.textContent = value;
-            opBox.textContent = operator;
-            //Post them
-            postOnLog(numBox)
-            postOnLog(opBox)
-            //Reset Intro for new number
-            resetIntro();
+
+
+            //Also check if the last action was using an operator, if so... modify the display to reflect the new input and do not allow the function to continue it's normal path
+            const operatorStatus = checkOperatorStatus();
+            const dry = () => {
+                //store the value and the operator
+                //for the operator simply save it
+                math.setOp(operator);
+
+                //for the value, a function decides where to store it: A or B value of the wVals object
+                let boolCheck = math.choose();
+                setAorBTo(boolCheck,value);
+                //finally, post on the logbox. First Create two boxes:
+                const numBox = htmlElements.mkLBox();
+                const opBox = htmlElements.mkLBox();
+                // Fill them with info
+                numBox.textContent = value;
+                opBox.textContent = operator;
+                //Post them
+                postOnLog(numBox)
+                postOnLog(opBox)
+                //Reset Intro for new number
+                resetIntro();
+            }
+
+            if (operatorStatus === false){
+                dry();
+            } else {
+                const boxArr = Array.from( document.querySelectorAll('div.logbox') );
+                const lastBox = boxArr[boxArr.length-1];
+                lastBox.textContent = operator;
+                math.setOp(operator);
+            }
+
+            
         })
     })
 }
@@ -158,6 +176,15 @@ function checkNGetConditionsForMath(){
     } else {
         alert('CONDITIONS NOT MET.')
     }
+ }
+
+ function checkOperatorStatus(){
+     const myStatus = math.getOp();
+     if (myStatus === undefined){
+         return false
+     } else {
+         return true
+     }
  }
 
 // Enable Listeners for Buttons

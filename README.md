@@ -22,8 +22,10 @@ Last action: added functionality to equals button
 Next fix: solve problem when clicking an operator after having already clicked one, implement floating point numbers
 Notes: progressed today despite IBS crisis. Good job to myself.
 
-07/01/22 2am 
-Note to self: delete console log on sucess from equals btn
+07/01/22 2am
+Last Action: implemented floating point numbers, fixed several bugs
+next: see comments, and implement ways to work around repeated inputs of the dot (.) symbol  
+Comments: delete console log on sucess from equals btn
 fix equals button used with no value inside introbox
 for some reason multiply is dividing, fix
 oh my god i have improved

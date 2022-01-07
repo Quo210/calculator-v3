@@ -19,7 +19,7 @@ function listenNumbers(){
         element.addEventListener('click',function(e){
             const data = e.target.textContent;
             const intro = getIntro();
-            if (intro.textContent != '0'){
+            if (intro.textContent != ''){
                 intro.textContent += data;
             } else {
                 intro.textContent = data;
@@ -32,14 +32,14 @@ function listenOperators(){
     const operators = Array.from( document.querySelectorAll('.opbtn') );
     operators.forEach(element => {
         element.addEventListener('click',function(e){
-            const data = e.target.textContent; // Get Operator string
+            const operator = e.target.textContent; // Get Operator string
             // verify if entry is valid, add function that checks FORMAT
 
             // after it passes the check, get the number
             const value = getIntro().textContent;
             //store the value and the operator
             //for the operator simply save it
-            math.setOp(data);
+            math.setOp(operator);
             //for the value, a function decides where to store it: A or B value of the wVals object
             let boolCheck = math.choose();
             setAorBTo(boolCheck,value);
@@ -48,7 +48,7 @@ function listenOperators(){
             const opBox = htmlElements.mkLBox();
             // Fill them with info
             numBox.textContent = value;
-            opBox.textContent = data;
+            opBox.textContent = operator;
             //Post them
             postOnLog(numBox)
             postOnLog(opBox)
@@ -172,7 +172,7 @@ listenEqualBtn();
 
 function resetIntro(){
     const intro = getIntro();
-    intro.textContent = '0';
+    intro.textContent = '';
 }
 
 function resetLog(){

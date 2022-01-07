@@ -51,7 +51,7 @@ export const math = (()=>{
 
     function divs(a,b){
         if (b === 0){
-            alert('Can not divs by zero')
+            alert('Can not divide by zero')
             return a
         }
         return a / b

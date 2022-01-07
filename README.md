@@ -21,3 +21,5 @@ Notes: Re-touch and publish blogpost about 'how to remove all children from a no
 Last action: added functionality to equals button
 Next fix: solve problem when clicking an operator after having already clicked one, implement floating point numbers
 Notes: progressed today despite IBS crisis. Good job to myself.
+
+07/01/22 2am 

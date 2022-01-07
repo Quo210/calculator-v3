@@ -26,3 +26,4 @@ Notes: progressed today despite IBS crisis. Good job to myself.
 Note to self: delete console log on sucess from equals btn
 fix equals button used with no value inside introbox
 for some reason multiply is dividing, fix
+oh my god i have improved

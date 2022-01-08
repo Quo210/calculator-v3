@@ -2,6 +2,7 @@ import './style.css';
 import { htmlElements } from './html-elements';
 import { myTools } from './tools';
 import { math } from './math';
+import { dotmodule } from './dot';
 
 const myModule = (()=>{//Mostly DOM and joining other modules
 
@@ -137,6 +138,15 @@ function listenEqualBtn(){
     })
 };
 
+function listenDotBtn(){
+    const dot = getDotBtn();
+    dot.addEventListener('click',function(e){
+        dotmodule.toggleStatus();
+        e.target.disabled = true;
+    })
+}
+
+
 // Tools
 
 function getFnBtns(){
@@ -190,6 +200,10 @@ function checkNGetConditionsForMath(){
      }
  }
 
+ function getDotBtn(){
+     return document.querySelector('button[data-key="."]')
+ }
+
 // Enable Listeners for Buttons
 
 listenNumbers();
@@ -197,6 +211,7 @@ listenOperators();
 listenClearAllBtn();
 listenDelBtn();
 listenEqualBtn();
+listenDotBtn();
 
 // Reset Area
 

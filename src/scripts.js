@@ -72,6 +72,7 @@ function listenOperators(){
                 math.setOp(operator);
             }
 
+            dotmodule.reset();
             
         })
     })
@@ -120,8 +121,6 @@ function listenEqualBtn(){
         eqBox.textContent = '=';
         log.appendChild(eqBox);
 
-        console.log(result);
-
         //Post the result on the log
         // const rBox = htmlElements.mkLBox();
         // rBox.textContent = result;
@@ -133,8 +132,7 @@ function listenEqualBtn(){
         //Reset memory in preparation for new inputs
         resetMemory();
         math.setOp(undefined);
-
-
+        dotmodule.reset();
     })
 };
 
@@ -182,9 +180,7 @@ function checkNGetConditionsForMath(){
     myArr.push(a,b,o);
     const check = (value) => value != undefined;
     const answer = myArr.every(check);
-    console.log(answer, myArr)
     if (answer === true){
-        console.log('SCS')
         return myArr
     } else {
         alert('CONDITIONS NOT MET.')

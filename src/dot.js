@@ -22,13 +22,15 @@ export const dotmodule = (()=>{
         } else {
             setStatus(true)
         }
+
+        console.log('Pressed status was: ',st,`therefore it now is: ${
+            (st === true)? false: true
+        }`);
     }
 
     function reset(){
         const st = getStatus();
-        const btn = getDotBtn();
         if (st === true){
-            toggleStatus();
             disable(false);
         }
     }

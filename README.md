@@ -2,7 +2,7 @@
 A practice project for a simple calculator using JS 
 
 Report Pattern
-DATE 00/00/00 HOUR XXX
+DATE 00/00/00 HOUR XXX -> STARTING TIME
 Last action:
 Next fix:
 Notes:
@@ -29,3 +29,6 @@ Comments: delete console log on sucess from equals btn
 fix equals button used with no value inside introbox
 for some reason multiply is dividing, fix
 oh my god i have improved
+
+08/01/22 4:40pm
+Comments: fix issue that allows to input a natural zero and then another positive number. this shouldn't happen when using whole numbers.

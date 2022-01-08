@@ -204,6 +204,7 @@ function checkNGetConditionsForMath(){
      return document.querySelector('button[data-key="."]')
  }
 
+
 // Enable Listeners for Buttons
 
 listenNumbers();
@@ -240,12 +241,18 @@ function clearAll(){
 function deleteLastNumber(){
     const intro = getIntro().textContent;
     let newStr = undefined;
+    const lastChar = intro.charAt(intro.length-1);
 
     if (intro.length > 1){
         const foo = intro.length-1;
         newStr = intro.slice(0,foo);
     } else {
         newStr = '';
+    }
+
+    if (lastChar == '.'){
+        const dot = getDotBtn();
+        dot.disabled = false;
     }
 
     return newStr;

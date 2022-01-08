@@ -29,3 +29,6 @@ Comments: delete console log on sucess from equals btn
 fix equals button used with no value inside introbox
 for some reason multiply is dividing, fix
 oh my god i have improved
+
+08/01/22
+Created dot branch for working on the dot button feature of the calculator 

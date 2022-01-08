@@ -251,8 +251,7 @@ function deleteLastNumber(){
     }
 
     if (lastChar == '.'){
-        const dot = getDotBtn();
-        dot.disabled = false;
+        dotmodule.reset();
     }
 
     return newStr;

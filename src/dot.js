@@ -2,6 +2,10 @@ export const dotmodule = (()=>{
 
     let pressed = false;
 
+    function getDotBtn(){
+        return document.querySelector('button[data-key="."]')
+    }
+
     function getStatus(){
         return pressed
     }
@@ -20,10 +24,27 @@ export const dotmodule = (()=>{
         }
     }
 
+    function reset(){
+        const st = getStatus();
+        const btn = getDotBtn();
+        if (st === true){
+            toggleStatus();
+            disable(false);
+        }
+    }
+
+    function disable(bool){
+        toggleStatus();
+        const button = getDotBtn();
+        button.disabled = bool;
+    }
+
     return {
         getStatus,
         setStatus,
-        toggleStatus
+        toggleStatus,
+        disable,
+        reset
     }
 
 })()

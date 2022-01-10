@@ -40,3 +40,5 @@ Maybe that would make the current implementation unnecesary and has to be scrapp
 Additional fixes:
 - removed console.log on success from the equals btn
 - fixed the reason why multiply was dividing 
+
+09/01/22 11pm

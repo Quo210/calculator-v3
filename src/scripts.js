@@ -2,7 +2,6 @@ import './style.css';
 import { htmlElements } from './html-elements';
 import { myTools } from './tools';
 import { math } from './math';
-import { dotmodule } from './dot';
 
 const myModule = (()=>{//Mostly DOM and joining other modules
 
@@ -17,15 +16,34 @@ myTools.appendFromArr(panel,operators)
 function listenNumbers(){
     const numbers = Array.from( document.querySelectorAll('.number') )
     numbers.forEach(element => {
-        element.addEventListener('click',function(e){
-            const data = e.target.textContent;
-            const intro = getIntro();
-            if (intro.textContent != ''){
-                intro.textContent += data;
-            } else {
-                intro.textContent = data;
+
+        const key = element.getAttribute('data-key')
+
+        if (key != '.'){
+            element.addEventListener('click',function(e){
+                const data = e.target.textContent;
+                const intro = getIntro();
+                if (intro.textContent != ''){
+                    intro.textContent += data;
+                } else {
+                    intro.textContent = data;
+                }
+            })    
+        } else {
+            element.addEventListener('click',function(e){
+                const data = e.target.textContent;
+                const intro = getIntro();
+                if (dotAllow()){
+                    if (intro.textContent != ''){
+                        intro.textContent += data;
+                    } else if (intro.textContent == '') {
+                        intro.textContent = `0${data}`;
+                    }
             }
-        })
+            })
+        }
+
+        
     })
 }
 
@@ -71,8 +89,6 @@ function listenOperators(){
                 lastBox.textContent = operator;
                 math.setOp(operator);
             }
-
-            dotmodule.reset();
             
         })
     })
@@ -132,18 +148,8 @@ function listenEqualBtn(){
         //Reset memory in preparation for new inputs
         resetMemory();
         math.setOp(undefined);
-        dotmodule.reset();
     })
 };
-
-function listenDotBtn(){
-    const dot = getDotBtn();
-    dot.addEventListener('click',function(e){
-        dotmodule.toggleStatus();
-        e.target.disabled = true;
-    })
-}
-
 
 // Tools
 
@@ -200,6 +206,15 @@ function checkNGetConditionsForMath(){
      return document.querySelector('button[data-key="."]')
  }
 
+ function dotAllow(){//Check if we can allow another dot to be written in the introbox
+    const introText = getIntro().textContent;
+    if (introText.includes(".")){
+        return false
+    } else {
+        return true
+    }
+ }
+
 
 // Enable Listeners for Buttons
 
@@ -208,7 +223,6 @@ listenOperators();
 listenClearAllBtn();
 listenDelBtn();
 listenEqualBtn();
-listenDotBtn();
 
 // Reset Area
 
@@ -244,10 +258,6 @@ function deleteLastNumber(){
         newStr = intro.slice(0,foo);
     } else {
         newStr = '';
-    }
-
-    if (lastChar == '.'){
-        dotmodule.reset();
     }
 
     return newStr;

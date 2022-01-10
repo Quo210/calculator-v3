@@ -42,3 +42,6 @@ Additional fixes:
 - fixed the reason why multiply was dividing 
 
 09/01/22 11pm
+Fixed faulty implementation of the dot button. 
+When inputing a dot without anything else it automatically adds a zero.
+next: see previous comments, maybe decor with nice CSS for fun 

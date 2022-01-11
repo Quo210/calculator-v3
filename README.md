@@ -47,3 +47,5 @@ When inputing a dot without anything else it automatically adds a zero.
 next: see previous comments, maybe decor with nice CSS for fun 
 
 10/01/22 10:30pm
+last fixed: fixed the app wrongfully including incomplete floating point numbers into the logboxes display (4., 1.)
+next: it's technically finished. It would be worth it adding more mathematical functions in a secondary panel

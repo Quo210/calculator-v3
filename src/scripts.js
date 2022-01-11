@@ -53,7 +53,18 @@ function listenOperators(){
         element.addEventListener('click',function(e){
             const operator = e.target.textContent; // Get Operator string
             // after it passes the check, get the number
-            const value = getIntro().textContent;
+
+            let introBoxContent = getIntro().textContent;
+
+            const valueFallback = () => {
+                if (introBoxContent == '' || introBoxContent == undefined){
+                    return '0'
+                } else {
+                    return introBoxContent
+                }
+            }
+
+            let value = valueFallback();
 
             //Also check if the last action was using an operator, if so... modify the display to reflect the new input and do not allow the function to continue it's normal path
             const operatorStatus = checkOperatorStatus();
@@ -61,7 +72,6 @@ function listenOperators(){
                 //store the value and the operator
                 //for the operator simply save it
                 math.setOp(operator);
-
                 //for the value, a function decides where to store it: A or B value of the wVals object
                 let boolCheck = math.choose();
                 setAorBTo(boolCheck,value);
@@ -77,6 +87,8 @@ function listenOperators(){
                 //Reset Intro for new number
                 resetIntro();
             }
+
+            //A condition for the case an user tries to input an operator without any number
 
             if (operatorStatus === false){
                 dry();

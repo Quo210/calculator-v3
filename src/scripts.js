@@ -23,7 +23,7 @@ function listenNumbers(){
             element.addEventListener('click',function(e){
                 const data = e.target.textContent;
                 const intro = getIntro();
-                if (intro.textContent != ''){
+                if (intro.textContent != '' && intro.textContent != '0'){
                     intro.textContent += data;
                 } else {
                     intro.textContent = data;

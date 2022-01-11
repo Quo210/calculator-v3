@@ -60,7 +60,7 @@ function listenOperators(){
                 if (introBoxContent == '' || introBoxContent == undefined){
                     return '0'
                 } else {
-                    return introBoxContent
+                    return checkIfLastNumIsDot(introBoxContent)
                 }
             }
 
@@ -127,7 +127,7 @@ function listenEqualBtn(){
         const log = getLog();
 
         //Determine and capture last number introduced by the user
-        const lastVal = intro.textContent;
+        const lastVal = checkIfLastNumIsDot(intro.textContent);
         const boolCheck = math.choose();
         console.log(boolCheck)
         setAorBTo(boolCheck,lastVal);
@@ -237,6 +237,16 @@ function checkNGetConditionsForMath(){
         return true
     }
  }
+
+ function checkIfLastNumIsDot (str) {
+    const lastchar = str.charAt(str.length-1);
+    if (lastchar === '.'){
+        return str.substr(0,str.length-1);
+    } else {
+        return str
+    }
+}
+
 
 
 // Enable Listeners for Buttons

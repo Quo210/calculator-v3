@@ -16,15 +16,34 @@ myTools.appendFromArr(panel,operators)
 function listenNumbers(){
     const numbers = Array.from( document.querySelectorAll('.number') )
     numbers.forEach(element => {
-        element.addEventListener('click',function(e){
-            const data = e.target.textContent;
-            const intro = getIntro();
-            if (intro.textContent != ''){
-                intro.textContent += data;
-            } else {
-                intro.textContent = data;
+
+        const key = element.getAttribute('data-key')
+
+        if (key != '.'){
+            element.addEventListener('click',function(e){
+                const data = e.target.textContent;
+                const intro = getIntro();
+                if (intro.textContent != ''){
+                    intro.textContent += data;
+                } else {
+                    intro.textContent = data;
+                }
+            })    
+        } else {
+            element.addEventListener('click',function(e){
+                const data = e.target.textContent;
+                const intro = getIntro();
+                if (dotAllow()){
+                    if (intro.textContent != ''){
+                        intro.textContent += data;
+                    } else if (intro.textContent == '') {
+                        intro.textContent = `0${data}`;
+                    }
             }
-        })
+            })
+        }
+
+        
     })
 }
 
@@ -70,7 +89,6 @@ function listenOperators(){
                 lastBox.textContent = operator;
                 math.setOp(operator);
             }
-
             
         })
     })
@@ -119,8 +137,6 @@ function listenEqualBtn(){
         eqBox.textContent = '=';
         log.appendChild(eqBox);
 
-        console.log(result);
-
         //Post the result on the log
         // const rBox = htmlElements.mkLBox();
         // rBox.textContent = result;
@@ -132,8 +148,6 @@ function listenEqualBtn(){
         //Reset memory in preparation for new inputs
         resetMemory();
         math.setOp(undefined);
-
-
     })
 };
 
@@ -172,9 +186,7 @@ function checkNGetConditionsForMath(){
     myArr.push(a,b,o);
     const check = (value) => value != undefined;
     const answer = myArr.every(check);
-    console.log(answer, myArr)
     if (answer === true){
-        console.log('SCS')
         return myArr
     } else {
         alert('CONDITIONS NOT MET.')
@@ -189,6 +201,20 @@ function checkNGetConditionsForMath(){
          return true
      }
  }
+
+ function getDotBtn(){
+     return document.querySelector('button[data-key="."]')
+ }
+
+ function dotAllow(){//Check if we can allow another dot to be written in the introbox
+    const introText = getIntro().textContent;
+    if (introText.includes(".")){
+        return false
+    } else {
+        return true
+    }
+ }
+
 
 // Enable Listeners for Buttons
 
@@ -225,6 +251,7 @@ function clearAll(){
 function deleteLastNumber(){
     const intro = getIntro().textContent;
     let newStr = undefined;
+    const lastChar = intro.charAt(intro.length-1);
 
     if (intro.length > 1){
         const foo = intro.length-1;

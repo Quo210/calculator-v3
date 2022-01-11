@@ -2,7 +2,7 @@
 A practice project for a simple calculator using JS 
 
 Report Pattern
-DATE 00/00/00 HOUR XXX
+DATE 00/00/00 HOUR XXX -> STARTING TIME
 Last action:
 Next fix:
 Notes:
@@ -30,5 +30,18 @@ fix equals button used with no value inside introbox
 for some reason multiply is dividing, fix
 oh my god i have improved
 
-08/01/22
-Created dot branch for working on the dot button feature of the calculator 
+08/01/22 4:40pm
+Comments: fix issue that allows to input a natural zero and then another positive number. this shouldn't happen when using whole numbers.
+If a dot is inputed before anything else, add a zero before it
+Last: added funcitonality to DOT btn
+next: the implemented method has problems, for example... a result from a previous operation with a dot can be given ANOTHER dot, creating an unusable number. A fix must be implemented so before writing the DOT it must check if one exists.
+Maybe that would make the current implementation unnecesary and has to be scrapped.
+
+Additional fixes:
+- removed console.log on success from the equals btn
+- fixed the reason why multiply was dividing 
+
+09/01/22 11pm
+Fixed faulty implementation of the dot button. 
+When inputing a dot without anything else it automatically adds a zero.
+next: see previous comments, maybe decor with nice CSS for fun 

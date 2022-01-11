@@ -45,3 +45,5 @@ Additional fixes:
 Fixed faulty implementation of the dot button. 
 When inputing a dot without anything else it automatically adds a zero.
 next: see previous comments, maybe decor with nice CSS for fun 
+
+10/01/22 10:30pm

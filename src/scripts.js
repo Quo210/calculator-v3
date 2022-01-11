@@ -29,7 +29,7 @@ function listenNumbers(){
                     intro.textContent = data;
                 }
             })    
-        } else {//Code for the 'Dot' button
+        } else {
             element.addEventListener('click',function(e){
                 const data = e.target.textContent;
                 const intro = getIntro();

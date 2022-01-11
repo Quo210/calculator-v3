@@ -52,11 +52,8 @@ function listenOperators(){
     operators.forEach(element => {
         element.addEventListener('click',function(e){
             const operator = e.target.textContent; // Get Operator string
-            // verify if entry is valid, add function that checks FORMAT
-
             // after it passes the check, get the number
             const value = getIntro().textContent;
-
 
             //Also check if the last action was using an operator, if so... modify the display to reflect the new input and do not allow the function to continue it's normal path
             const operatorStatus = checkOperatorStatus();
@@ -120,7 +117,20 @@ function listenEqualBtn(){
         //Determine and capture last number introduced by the user
         const lastVal = intro.textContent;
         const boolCheck = math.choose();
+        console.log(boolCheck)
         setAorBTo(boolCheck,lastVal);
+
+        //Check if the conditions are given to call the math function
+        const v = checkNGetConditionsForMath();
+        console.log(v);
+        let result = undefined;
+
+        if (v != false){
+            result = math.operate(v[0],v[1],v[2]);
+        } else {
+            alert('You need two numbers and one operator before calculating something.')
+            return
+        }
 
         //Report the operator and the number in the logbox, reset the intro slot
         const lastValBox = htmlElements.mkLBox();
@@ -128,9 +138,9 @@ function listenEqualBtn(){
         log.appendChild(lastValBox);
         resetIntro();
 
-        //Check if the conditions are given to call the math function
-        const v = checkNGetConditionsForMath();
-        const result = math.operate(v[0],v[1],v[2]);
+       
+
+
 
         //Make a box that posts an equal sign on the log
         const eqBox = htmlElements.mkLBox();
@@ -184,12 +194,13 @@ function checkNGetConditionsForMath(){
     const o = math.getOp();
     const myArr = [];
     myArr.push(a,b,o);
-    const check = (value) => value != undefined;
+    const check = (value) => value != undefined && value != '';
     const answer = myArr.every(check);
     if (answer === true){
         return myArr
     } else {
-        alert('CONDITIONS NOT MET.')
+        console.log('CONDITIONS ARE NOT MET')
+        return false 
     }
  }
 

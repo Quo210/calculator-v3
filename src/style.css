@@ -63,7 +63,6 @@ main {
     text-align: right;
     border: 5px  solid;
     padding: 0.25rem;
-
 }
 
 .log{
@@ -71,8 +70,7 @@ main {
     flex-direction: row;
     flex-wrap: wrap;
     align-content: flex-end;
-    overflow-y: hidden;
-    
+    overflow-y: hidden; 
 }
 
 .logbox{

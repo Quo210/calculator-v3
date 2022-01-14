@@ -129,12 +129,10 @@ function listenEqualBtn(){
         //Determine and capture last number introduced by the user
         const lastVal = checkIfLastNumIsDot(intro.textContent);
         const boolCheck = math.choose();
-        console.log(boolCheck)
         setAorBTo(boolCheck,lastVal);
 
         //Check if the conditions are given to call the math function
         const v = checkNGetConditionsForMath();
-        console.log(v);
         let result = undefined;
 
         if (v != false){
@@ -149,10 +147,6 @@ function listenEqualBtn(){
         lastValBox.textContent = lastVal;
         log.appendChild(lastValBox);
         resetIntro();
-
-       
-
-
 
         //Make a box that posts an equal sign on the log
         const eqBox = htmlElements.mkLBox();
@@ -295,11 +289,5 @@ function deleteLastNumber(){
 
     return newStr;
 }
-
-
-return {
-
-}
-
 
 })()
